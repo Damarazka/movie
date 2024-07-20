@@ -1,1 +1,11 @@
-
+ion-tab-bar{
+    position: absolute;
+    width: 90%;
+    align-self: center;
+    bottom: 0;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    --background: rgba(0, 0, 0, 0.3);
+    --color-selected: #3880ff;
+    --color: #fff;
+}
