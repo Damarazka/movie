@@ -20,6 +20,7 @@ export class MovieService {
   }
 
   searchMovies(query: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/search/movie?query=${query}&api_key=${this.apiKey}`);
+    const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${query}`;
+    return this.http.get(url);
   }
 }
