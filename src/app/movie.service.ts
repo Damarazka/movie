@@ -23,4 +23,8 @@ export class MovieService {
     const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${query}`;
     return this.http.get(url);
   }
+
+  getTrendingMovies(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/trending/all/day?api_key=${this.apiKey}`);
+  }
 }

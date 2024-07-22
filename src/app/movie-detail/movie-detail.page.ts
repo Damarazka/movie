@@ -10,8 +10,8 @@ import { MovieService } from '../movie.service';
 export class MovieDetailPage implements OnInit {
   movieId: number | undefined;
   movie: any;
-  
-  constructor(    private route: ActivatedRoute, private movieService: MovieService) { }
+
+  constructor(private route: ActivatedRoute, private movieService: MovieService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -27,6 +27,8 @@ export class MovieDetailPage implements OnInit {
     if (this.movieId !== undefined) {
       this.movieService.getMovieDetails(this.movieId).subscribe(response => {
         this.movie = response;
+      }, error => {
+        console.error('Failed to load movie details:', error);
       });
     }
   }
