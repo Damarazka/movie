@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../movie.service';
+
 
 @Component({
   selector: 'app-movie-detail',
@@ -10,8 +11,10 @@ import { MovieService } from '../movie.service';
 export class MovieDetailPage implements OnInit {
   movieId: number | undefined;
   movie: any;
+  cast: any[] = []
+  crew: any[] = []
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService) { }
+  constructor(private route: ActivatedRoute, private movieService: MovieService, private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -27,9 +30,15 @@ export class MovieDetailPage implements OnInit {
     if (this.movieId !== undefined) {
       this.movieService.getMovieDetails(this.movieId).subscribe(response => {
         this.movie = response;
+        this.cast = response.credits.cast;
+        this.crew = response.credits.crew;
       }, error => {
         console.error('Failed to load movie details:', error);
       });
     }
+  }
+
+  goBack() {
+    this.router.navigate(['/']);
   }
 }
