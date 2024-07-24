@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab4Page implements OnInit {
 
+  user: any = {
+    name: 'Damarazks Akhyari',
+    email: 'example123@mail.com',
+    phone: '123-456-7890',
+    instagram: 'ahoha_',
+    address: '123 Main St, Anytown, USA'
+  }
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }
