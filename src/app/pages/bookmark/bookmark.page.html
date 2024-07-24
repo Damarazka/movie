@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Bookmarks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let movie of bookmarks" [routerLink]="['/movie-detail', movie.id]" >
+      <ion-thumbnail slot="start">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"/>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ movie.title }}</h2>
+        <p>Release Date: {{ movie.release_date }}</p>
+        <p>Rating: {{ movie.vote_average }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -7,13 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { MovieDetailPageRoutingModule } from './movie-detail-routing.module';
 
 import { MovieDetailPage } from './movie-detail.page';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MovieDetailPageRoutingModule
+    RouterModule.forChild([
+      {
+        path: '',
+        component: MovieDetailPage
+      }
+    ])
   ],
   declarations: [MovieDetailPage]
 })

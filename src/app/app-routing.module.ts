@@ -8,11 +8,15 @@ const routes: Routes = [
   },
   {
     path: 'movie-detail/:id',
-    loadChildren: () => import('./movie-detail/movie-detail.module').then( m => m.MovieDetailPageModule)
+    loadChildren: () => import('./pages/movie-detail/movie-detail.module').then(m => m.MovieDetailPageModule)
   },
   {
     path: 'tab4',
-    loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
+    loadChildren: () => import('./pages/tab4/tab4.module').then(m => m.Tab4PageModule)
+  },
+  {
+    path: 'bookmark',
+    loadChildren: () => import('./pages/bookmark/bookmark.module').then( m => m.BookmarkPageModule)
   }
 ];
 @NgModule({
@@ -21,4 +25,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

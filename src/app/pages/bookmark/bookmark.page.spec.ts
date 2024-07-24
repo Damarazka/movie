@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HistoryPage } from './history.page';
+import { BookmarkPage } from './bookmark.page';
 
-describe('HistoryPage', () => {
-  let component: HistoryPage;
-  let fixture: ComponentFixture<HistoryPage>;
+describe('BookmarkPage', () => {
+  let component: BookmarkPage;
+  let fixture: ComponentFixture<BookmarkPage>;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HistoryPage);
+    fixture = TestBed.createComponent(BookmarkPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

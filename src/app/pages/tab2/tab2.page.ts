@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MovieService } from '../movie.service';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-tab2',
@@ -10,7 +10,7 @@ export class Tab2Page {
   query: string = '';
   movies: any[] = [];
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService) { }
 
   searchMovies() {
     if (this.query.trim().length === 0) {
@@ -20,7 +20,7 @@ export class Tab2Page {
 
     this.movieService.searchMovies(this.query).subscribe((response: any) => {
       console.log('API Response:', response);
-      this.movies = response.results; 
+      this.movies = response.results;
     }, (error) => {
       console.error('API Error:', error);
     });

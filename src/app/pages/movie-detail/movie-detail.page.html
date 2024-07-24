@@ -17,6 +17,10 @@
     <ion-card-content>
       <p>{{ movie.overview }}</p>
       <p>Rating: {{ movie.vote_average }}</p>
+      <ion-button (click)="toggleBookmark()" class="toggle">
+        <ion-icon [name]="isBookmarked ? 'bookmark' : 'bookmark-outline'" class="icon-toggle"></ion-icon>
+        {{ isBookmarked ? 'Remove Bookmark' : 'Add Bookmark' }}
+      </ion-button>
     </ion-card-content>
   </ion-card>
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MovieService } from '../movie.service';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-tab1',
@@ -10,7 +10,7 @@ export class Tab1Page {
   popularMovies: any[] = [];
 
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
     this.movieService.getPopularMovies().subscribe((response) => {
