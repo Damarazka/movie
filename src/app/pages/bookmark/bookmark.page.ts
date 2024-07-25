@@ -25,6 +25,6 @@ export class BookmarkPage implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/tabs/tab4']);
   }
 }

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="goBack()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let movie of history" [routerLink]="['/movie-detail', movie.id]">
+      <ion-label>{{ movie.title }}</ion-label>
+      <ion-thumbnail slot="start">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" />
+      </ion-thumbnail>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -24,4 +24,8 @@ export class Tab4Page implements OnInit {
   goToBookmark(){
     this.router.navigateByUrl('/bookmark')
   }
+
+  goToHistory(){
+    this.router.navigateByUrl('/history')
+  }
 }
