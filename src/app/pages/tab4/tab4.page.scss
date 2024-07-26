@@ -1,8 +1,9 @@
 .profile-header {
-    padding: 20px;
+    padding: 20px 20px;
     text-align: center;
     color: white;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -16,11 +17,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 10px; /* Add some space between the avatar and the button */
 }
 
-.change-avatar-button {
-    margin-top: 10px;
+.default-avatar-icon {
+    font-size: 80px;
+    color: #ccc;
 }
 
 ion-card {

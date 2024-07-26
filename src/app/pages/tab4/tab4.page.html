@@ -1,6 +1,7 @@
 <ion-header class="profile-header">
   <ion-avatar class="profile-avatar">
-    <img [src]="user.avatar" alt="Profile Image">
+    <img *ngIf="user.avatar" [src]="user.avatar" alt="Profile Image">
+    <ion-icon *ngIf="!user.avatar" name="person-circle-outline" class="default-avatar-icon"></ion-icon>
   </ion-avatar>
   <ion-button fill="clear" class="change-avatar-button" (click)="changeAvatar()">
     <ion-icon slot="icon-only" name="camera"></ion-icon>
