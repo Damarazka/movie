@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-tab4',
@@ -13,7 +14,8 @@ export class Tab4Page implements OnInit {
     email: 'example123@mail.com',
     phone: '123-456-7890',
     instagram: 'ahoha_',
-    address: '123 Main St, Anytown, USA'
+    address: '123 Main St, Anytown, USA',
+    avatar: 'assets/ciput.jpeg'
   }
 
   constructor(private router : Router) { }
@@ -27,5 +29,16 @@ export class Tab4Page implements OnInit {
 
   goToHistory(){
     this.router.navigateByUrl('/history')
+  }
+
+  async changeAvatar() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Prompt
+    });
+
+    this.user.avatar = image.dataUrl;
   }
 }
