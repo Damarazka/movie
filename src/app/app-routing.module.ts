@@ -21,7 +21,15 @@ const routes: Routes = [
   {
     path: 'history',
     loadChildren: () => import('./pages/history/history.module').then( m => m.HistoryPageModule)
-  }
+  },
+  {
+    path: 'mahasiswa',
+    loadChildren: () => import('./pages/mahasiswa/mahasiswa.module').then( m => m.MahasiswaPageModule)
+  },
+  {
+    path: 'create-mahasiswa',
+    loadChildren: () => import('./pages/create-mahasiswa/create-mahasiswa.module').then( m => m.CreateMahasiswaPageModule)
+  },
 ];
 @NgModule({
   imports: [
