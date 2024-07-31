@@ -9,31 +9,32 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Update Mahasiswa</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-item>
-    <ion-label position="floating">Nama</ion-label>
-    <ion-input [(ngModel)]="mahasiswa.nama"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">NIM</ion-label>
-    <ion-input [(ngModel)]="mahasiswa.nim"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Alamat</ion-label>
-    <ion-input [(ngModel)]="mahasiswa.alamat"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Email</ion-label>
-    <ion-input [(ngModel)]="mahasiswa.email"></ion-input>
-  </ion-item>
-
-  <ion-button expand="full" (click)="updateMahasiswa()">Update</ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Edit</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nama</ion-label>
+        <ion-input [(ngModel)]="mahasiswa.nama"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">NIM</ion-label>
+        <ion-input [(ngModel)]="mahasiswa.nim"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">Alamat</ion-label>
+        <ion-input [(ngModel)]="mahasiswa.alamat"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input [(ngModel)]="mahasiswa.email"></ion-input>
+      </ion-item>
+    
+      <ion-button expand="full" (click)="updateMahasiswa()">Update</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
