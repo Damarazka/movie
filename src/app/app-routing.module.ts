@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'create-mahasiswa',
     loadChildren: () => import('./pages/create-mahasiswa/create-mahasiswa.module').then( m => m.CreateMahasiswaPageModule)
   },
+  {
+    path: 'update-mahasiswa',
+    loadChildren: () => import('./pages/update-mahasiswa/update-mahasiswa.module').then( m => m.UpdateMahasiswaPageModule)
+  },
 ];
 @NgModule({
   imports: [

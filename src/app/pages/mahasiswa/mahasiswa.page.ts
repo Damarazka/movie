@@ -3,6 +3,7 @@ import { MahasiswaService } from 'src/app/services/mahasiswa.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mahasiswa',
@@ -10,12 +11,15 @@ import { catchError, Observable, throwError } from 'rxjs';
   styleUrls: ['./mahasiswa.page.scss'],
 })
 export class MahasiswaPage implements OnInit {
-  private apiUrl = 'http://93.127.199.17:8080/api/mahasiswa'
   mahasiswas : any[] = []
-  constructor(private mahasiswaService: MahasiswaService, private router: Router, private httpClient: HttpClient) { }
+
+  constructor(private mahasiswaService: MahasiswaService, private router: Router, private httpClient: HttpClient, private navCtrl: NavController) { }
+
+  ionViewWillEnter(){
+    this.loadMahasiswa()
+  }
 
   ngOnInit() {
-    this.loadMahasiswa()
   }
 
   loadMahasiswa() {
@@ -37,6 +41,13 @@ export class MahasiswaPage implements OnInit {
 
   moveToCreateMahasiswa(){
     this.router.navigateByUrl('/create-mahasiswa')
+  }
+  
+  moveToUpdateMahasiswa(data: any) {
+    const payload = JSON.stringify(data)
+    this.navCtrl.navigateForward('/update-mahasiswa', {
+      queryParams: { payload }
+    });
   }
 
   deleteMahasiswa(_id: any) {

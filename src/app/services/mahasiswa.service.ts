@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Mahasiswa } from '../pages/mahasiswa.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +24,14 @@ export class MahasiswaService {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
-  createMahasiswa(mahasiswa: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/create`, mahasiswa);
+  createMahasiswa(model : Mahasiswa): Observable<any> {
+    const payload = {
+      nama: model.nama,
+      alamat: model.alamat,
+      nim: model.nim,
+      email: model.email,
+    }
+    return this.http.post<any>(this.apiUrl + '/create', payload)
   }
 
   deleteMahasiswa(id: string): Observable<any>{
@@ -41,5 +49,16 @@ export class MahasiswaService {
         return throwError(error)
       })
     )
+  }
+
+  updateMahasiswa(body: any): Observable<any> {
+    const payload = {
+      nama: body.nama,
+      alamat: body.alamat,
+      nim: body.nim,
+      email: body.email,
+    }
+
+    return this.http.put<any>(`${this.apiUrl}/update/${body._id}`, payload)
   }
 }

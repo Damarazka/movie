@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>mahasiswa list</ion-title>
+    <ion-title>Mahasiswa List</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,6 +14,9 @@
         <p>{{ mahasiswa.email }}</p>
       </ion-label>
       <ion-buttons slot="end">
+        <ion-button (click)="moveToUpdateMahasiswa(mahasiswa)">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
         <ion-button (click)="deleteMahasiswa(mahasiswa._id)">
           <ion-icon name="trash"></ion-icon>
         </ion-button>
