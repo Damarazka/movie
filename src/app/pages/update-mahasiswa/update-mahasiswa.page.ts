@@ -28,16 +28,6 @@ export class UpdateMahasiswaPage implements OnInit {
     })
   }
 
-/*   updateMahasiswa() {
-    this.mahasiswaService.updateMahasiswa(this.mahasiswa).subscribe(
-      () => {
-        this.router.navigateByUrl('/mahasiswa');
-      },
-      (error) => {
-        console.error('Error updating mahasiswa:', error);
-      }
-    );
-  } */
 
   async updateMahasiswa() {
     try {
@@ -47,5 +37,9 @@ export class UpdateMahasiswaPage implements OnInit {
     } catch (error) {
       console.log('error bang', this.mahasiswa)
     }
+  }
+
+  back(){
+    this.router.navigateByUrl('/mahasiswa')
   }
 }

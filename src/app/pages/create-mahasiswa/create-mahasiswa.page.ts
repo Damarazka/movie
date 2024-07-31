@@ -32,4 +32,8 @@ export class CreateMahasiswaPage implements OnInit {
     )
   }
 
+  back(){
+    this.router.navigateByUrl('/mahasiswa')
+  }
+
 }

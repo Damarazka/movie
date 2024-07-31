@@ -33,6 +33,10 @@ export class Tab4Page implements OnInit {
     this.router.navigateByUrl('/history');
   }
 
+  goToCrud(){
+    this.router.navigateByUrl('/mahasiswa')
+  }
+
   async changeAvatar() {
     try {
       const image = await Camera.getPhoto({
