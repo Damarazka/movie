@@ -34,6 +34,14 @@ const routes: Routes = [
     path: 'update-mahasiswa',
     loadChildren: () => import('./pages/update-mahasiswa/update-mahasiswa.module').then( m => m.UpdateMahasiswaPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
 ];
 @NgModule({
   imports: [
