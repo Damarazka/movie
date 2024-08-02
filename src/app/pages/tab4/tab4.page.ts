@@ -66,4 +66,8 @@ export class Tab4Page implements OnInit {
       this.user.avatar = value;
     }
   }
+
+  goToMap(){
+    this.router.navigateByUrl('/map')
+  }
 }

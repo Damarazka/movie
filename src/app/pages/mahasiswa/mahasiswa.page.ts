@@ -75,4 +75,7 @@ export class MahasiswaPage implements OnInit {
     await alert.present()
   }
   
+  backToHome(){
+    this.router.navigateByUrl('/tabs/tab1')
+  }
 }
