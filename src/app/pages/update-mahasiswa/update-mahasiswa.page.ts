@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { MahasiswaService } from 'src/app/services/mahasiswa.service';
-import { Mahasiswa } from '../mahasiswa.model';
+import { MahasiswaModel } from '../mahasiswa.model';
 
 @Component({
   selector: 'app-update-mahasiswa',
@@ -10,14 +9,14 @@ import { Mahasiswa } from '../mahasiswa.model';
   styleUrls: ['./update-mahasiswa.page.scss'],
 })
 export class UpdateMahasiswaPage implements OnInit {
-  mahasiswa: Mahasiswa = {
+  mahasiswa: MahasiswaModel = {
     nama: '',
     alamat: '',
     nim: '',
     email: ''
   }
   
-  constructor(private mahasiswaService: MahasiswaService, private router: Router, private route: ActivatedRoute, private navCtrl: NavController) { }
+  constructor( private router: Router, private route: ActivatedRoute, private navCtrl: NavController) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe((response: any) => {
@@ -30,13 +29,13 @@ export class UpdateMahasiswaPage implements OnInit {
 
 
   async updateMahasiswa() {
-    try {
+/*     try {
       await this.mahasiswaService.updateMahasiswa(this.mahasiswa).toPromise()
       const payload = JSON.stringify(this.mahasiswa)
       this.navCtrl.navigateBack('/mahasiswa', {queryParams: {payload}})
     } catch (error) {
       console.log('error bang', this.mahasiswa)
-    }
+    } */
   }
 
   back(){

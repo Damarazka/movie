@@ -10,6 +10,9 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let mahasiswa of mahasiswas">
+      <ion-avatar class="ion-margin-right">
+        <img [src]="mahasiswa.photo" />
+      </ion-avatar>
       <ion-label>
         <h2>{{ mahasiswa.nama }}</h2>
         <p>{{ mahasiswa.nim }}</p>

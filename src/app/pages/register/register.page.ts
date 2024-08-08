@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Preferences } from '@capacitor/preferences';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,28 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  username!: string
-  password!: string
+  username!: string;
+  email!: string;
+  password!: string;
 
-  constructor(private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
   }
 
-  async register(){
-    const {value} = await Preferences.get({ key: this.username})
-    if (value) {
-      alert('username udah ada')
-      return
-    }
+  async register() {
+    const body = { username: this.username, email: this.email, password: this.password };
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
 
-    await Preferences.set({
-      key: this.username,
-      value: JSON.stringify({username: this.username, password: this.password})
-    })
-
-    alert('Registration successful!');
-    this.router.navigateByUrl('/login');
+    this.http.post('http://93.127.199.17:8080/api/register', body, { headers, observe: 'response' })
+      .subscribe({
+        next: () => {
+          alert('Registration successful!');
+          this.router.navigateByUrl('/login');
+        },
+        error: (error) => {
+          alert('Registration failed: ' + error.message);
+        }
+      });
   }
-
 }

@@ -1,7 +1,7 @@
-export interface Mahasiswa{
+export interface MahasiswaModel{
     nama: string,
     alamat: string,
     email: string,
     nim: string,
-    _v?: string
+    photo?: string
 }

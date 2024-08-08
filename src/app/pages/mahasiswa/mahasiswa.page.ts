@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MahasiswaService } from 'src/app/services/mahasiswa.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { AlertController, NavController } from '@ionic/angular';
+import { HttpService } from 'src/app/services/http.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-mahasiswa',
@@ -11,38 +12,38 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['./mahasiswa.page.scss'],
 })
 export class MahasiswaPage implements OnInit {
-  mahasiswas : any[] = []
+  mahasiswas: any[] = [];
 
-  constructor(private mahasiswaService: MahasiswaService, private router: Router, private alrtCntrl: AlertController, private navCtrl: NavController) { }
+  constructor(private router: Router, private alrtCntrl: AlertController, private navCtrl: NavController, private http: HttpService) { }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.loadMahasiswa()
   }
 
   ngOnInit() {
   }
 
-  loadMahasiswa() {
-    this.mahasiswaService.getAllMahasiswas().subscribe(
-      data => {
-        if (Array.isArray(data)) {
-          this.mahasiswas = data;
-          console.log('Loaded mahasiswa data:', this.mahasiswas);
-        } else {
-          console.error('Expected an array but got:', data);
-        }
-      },
-      error => {
-        console.error('Error loading students:', error);
-      }
-    );
-  }
-  
+  async loadMahasiswa() {
+    try {
+      const headers = this.http.getToken();
 
-  moveToCreateMahasiswa(){
+      const response = await this.http.get(`${environment.baseUrl}/mahasiswa`, headers);
+
+      if (response.status !== 200) {
+        throw response;
+      }
+
+      this.mahasiswas = response.body.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+  moveToCreateMahasiswa() {
     this.router.navigateByUrl('/create-mahasiswa')
   }
-  
+
   moveToUpdateMahasiswa(data: any) {
     const payload = JSON.stringify(data)
     this.navCtrl.navigateForward('/update-mahasiswa', {
@@ -50,8 +51,8 @@ export class MahasiswaPage implements OnInit {
     });
   }
 
-  async deleteMahasiswa(_id: any){
-    const alert = await this.alrtCntrl.create({
+  async deleteMahasiswa(_id: any) {
+/*     const alert = await this.alrtCntrl.create({
       header: 'Konfirmasi',
       message: 'Data ini beneran mau dihapus bre?',
       buttons: [{
@@ -72,10 +73,10 @@ export class MahasiswaPage implements OnInit {
       }]
     })
 
-    await alert.present()
+    await alert.present() */
   }
-  
-  backToHome(){
+
+  backToHome() {
     this.router.navigateByUrl('/tabs/tab1')
   }
 }

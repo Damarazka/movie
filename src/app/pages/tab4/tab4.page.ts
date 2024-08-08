@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Preferences } from '@capacitor/preferences';
+import { UserModel } from '../user.model';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-tab4',
@@ -10,19 +12,23 @@ import { Preferences } from '@capacitor/preferences';
 })
 export class Tab4Page implements OnInit {
 
-  user: any = {
-    name: 'Damarazka Akhyari',
-    email: 'example123@mail.com',
-    phone: '123-456-7890',
-    instagram: 'ahoha_',
-    address: '123 Main St, Anytown, USA',
-    avatar: ''
-  };
+  user: UserModel = {} as UserModel;
 
-  constructor(private router: Router) { }
+  // user: any = {
+  //   name: 'Damarazka Akhyari',
+  //   email: 'example123@mail.com',
+  //   phone: '123-456-7890',
+  //   instagram: 'ahoha_',
+  //   address: '123 Main St, Anytown, USA',
+  //   avatar: ''
+  // };
+
+  constructor(private router: Router, private http: HttpService) {
+    this.user = this.http.getUserData();
+  }
 
   async ngOnInit() {
-    await this.loadAvatar()
+    await this.loadAvatar();
   }
 
   goToBookmark() {
@@ -33,7 +39,7 @@ export class Tab4Page implements OnInit {
     this.router.navigateByUrl('/history');
   }
 
-  goToCrud(){
+  goToCrud() {
     this.router.navigateByUrl('/mahasiswa')
   }
 
@@ -67,7 +73,7 @@ export class Tab4Page implements OnInit {
     }
   }
 
-  goToMap(){
+  goToMap() {
     this.router.navigateByUrl('/map')
   }
 }
